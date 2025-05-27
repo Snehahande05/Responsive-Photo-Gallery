@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>My Gallery</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>My Gallery</h1>
+  </header>
+
+  <main class="gallery">
+    <a href="images/snow white.png" class="gallery-item" data-lightbox><img src="images/snow white.png" alt="Gallery image 1"></a>
+    <a href="images/Cinderella.png" class="gallery-item" data-lightbox><img src="images/Cinderella.png" alt="Gallery image 2"></a>
+    <a href="images/Aurora.png" class="gallery-item" data-lightbox><img src="images/Aurora.png" alt="Gallery image 3"></a>
+    <a href="images/Ariel.png" class="gallery-item" data-lightbox><img src="images/Ariel.png" alt="Gallery image 4"></a>
+    <a href="images/Belle.png" class="gallery-item" data-lightbox><img src="images/Belle.png" alt="Gallery image 5"></a>
+    <a href="images/Rapunzel.png" class="gallery-item" data-lightbox><img src="images/Rapunzel.png" alt="Gallery image 6"></a>
+    <a href="images/Elsa.png" class="gallery-item" data-lightbox><img src="images/Elsa.png" alt="Gallery image 7"></a>
+    <a href="images/Raya.png" class="gallery-item" data-lightbox><img src="images/Raya.png" alt="Gallery image 8"></a>
+    <a href="images/Anna.png" class="gallery-item" data-lightbox><img src="images/Anna.png" alt="Gallery image 9"></a>
+    <a href="images/Merida.png" class="gallery-item" data-lightbox><img src="images/Merida.png" alt="Gallery image 10"></a>
+    <a href="images/Asha.png" class="gallery-item" data-lightbox><img src="images/Asha.png" alt="Gallery image 10"></a>
+    <a href="images/Moana.png" class="gallery-item" data-lightbox><img src="images/Moana.png" alt="Gallery image 10"></a>
+  </main>
+
+  <!-- Lightbox HTML -->
+  <div class="lightbox" id="lightbox">
+    <span class="close">&times;</span>
+    <img class="lightbox-img" id="lightbox-img" src="" alt="Full Image">
+  </div>
+
+  <script>
+    const lightbox = document.getElementById("lightbox");
+    const lightboxImg = document.getElementById("lightbox-img");
+    const close = document.querySelector(".close");
+
+    document.querySelectorAll("[data-lightbox]").forEach(item => {
+      item.addEventListener("click", e => {
+        e.preventDefault();
+        lightbox.classList.add("show");
+        lightboxImg.src = item.href;
+      });
+    });
+
+    close.addEventListener("click", () => {
+      lightbox.classList.remove("show");
+      lightboxImg.src = "";
+    });
+
+    lightbox.addEventListener("click", (e) => {
+      if (e.target !== lightboxImg) {
+        lightbox.classList.remove("show");
+        lightboxImg.src = "";
+      }
+    });
+  </script>
+</body>
+</html>
